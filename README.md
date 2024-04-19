@@ -8,6 +8,7 @@
 - Laurinne Oliveira
 - Paloma Arize
 - Pedro Marambaia
+- Renilton Ribeiro
 
 ---
 
