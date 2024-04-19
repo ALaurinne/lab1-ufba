@@ -1,6 +1,6 @@
 # Exercício 2
 
-[Exercício](/question.pdf)
+[Exercício](/Atividade 2/question.pdf)
 
 ----
 ### Grupo: 
@@ -13,5 +13,5 @@
 
 ---
 
-![Tabela](/table.jpeg)
-![Diagrama](/diagram.jpeg)
+![Tabela](/Atividade 2/table.jpeg)
+![Diagrama](/Atividade 2/diagram.jpeg)
