@@ -4,6 +4,7 @@
 
 ----
 ### Grupo: 
+- Alberto Santana
 - Guilherme Bonfim
 - Laurinne Oliveira
 - Paloma Arize
