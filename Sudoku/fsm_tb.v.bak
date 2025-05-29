@@ -1,0 +1,61 @@
+`timescale 1ns / 1ps
+
+module fsm_tb;
+
+    reg clk;
+    reg rst;
+    reg [10:0] in;
+    wire [4:0] out;
+
+    fsm uut (
+        .clk(clk),
+        .rst(rst),
+        .in(in),
+        .out(out)
+    );
+
+    // Clock generation
+    initial clk = 0;
+    always #5 clk = ~clk;
+
+    // Test sequence
+    initial begin
+        $display("Iniciando simulação...");
+        $monitor("Time=%0t, State Inputs=%b, Outputs=%b", $time, in, out);
+
+        rst = 1; in = 11'b0;
+        #10 rst = 0;
+
+        // Q0 -> Q1 (com entrada ↑ = 1)
+        in = 11'b00000000001; #10;
+
+        // Q1 -> Q2 (com X = 1)
+        in = 11'b00001000000; #10;
+
+        // Q2 -> Q2 (movimento →)
+        in = 11'b00000000010; #10;
+
+        // Q2 -> Q3 (com X = 1)
+        in = 11'b00001000000; #10;
+
+        // Q3 -> Q2 (X = 1 para CEL_COUNT)
+        in = 11'b00001000000; #10;
+
+        // Q2 -> Q3 (X = 1)
+        in = 11'b00001000000; #10;
+
+        // Q3 -> Q4 (X = 1 => WIN)
+        in = 11'b00001000000; #10;
+
+        // Q4 -> Q0 (qualquer entrada)
+        in = 11'b10000000000; #10;
+
+        // Reset via START
+        in = 11'b00000000001; #10;
+        in = 11'b00000000000; #10;
+
+        $display("Fim da simulação.");
+        $finish;
+    end
+
+endmodule

@@ -1,0 +1,50 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/Downloads/Nova pasta
+vfsm
+!s110 1748480479
+!i10b 1
+!s100 =EQ46WX8^EK3L8=W6LV2Q3
+INGABgFGGSgbHF1Qi]QWng1
+Z1 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1748479700
+8fsm.v
+Ffsm.v
+L0 1
+Z2 OV;L;10.5b;63
+r1
+!s85 0
+31
+!s108 1748480479.000000
+!s107 fsm.v|
+!s90 -reportprogress|300|fsm.v|
+!i113 1
+Z3 tCvgOpt 0
+vfsm_tb
+!s110 1748480482
+!i10b 1
+!s100 <DJU@olb]9YRNbI1>Ed?01
+I;IUDfkTiNPVG;?]0ilVj>2
+R1
+R0
+w1748480455
+8fsm_tb.v
+Ffsm_tb.v
+L0 1
+R2
+r1
+!s85 0
+31
+!s108 1748480482.000000
+!s107 fsm_tb.v|
+!s90 -reportprogress|300|fsm_tb.v|
+!i113 1
+R3

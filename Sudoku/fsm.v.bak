@@ -1,0 +1,58 @@
+module fsm (
+    input clk,
+    input rst,
+    input [10:0] in, // entradas: ↑, →, ↓, ←, X, Y, Z, V, R, O, START
+    output reg [4:0] out // saídas: WRONG, LOSE, CEL_COUNT, WIN, CAN_ACCESS
+);
+
+    typedef enum reg [2:0] {
+        Q0, Q1, Q2, Q3, Q4, Q5
+    } state_t;
+
+    state_t state, next_state;
+
+    always @(posedge clk or posedge rst) begin
+        if (rst || in[10])
+            state <= Q0;
+        else
+            state <= next_state;
+    end
+
+    always @(*) begin
+        out = 5'b00000;
+        next_state = state;
+        case (state)
+            Q0: if (|in[9:0]) next_state = Q1;
+
+            Q1: if (in[4]) next_state = Q2; // X = in[4]
+
+            Q2: begin
+                if (in[0] || in[1] || in[2] || in[3]) next_state = Q2;
+                else if (in[4]) begin
+                    next_state = Q3;
+                    out[4] = 1; // CAN_ACCESS
+                end
+            end
+
+            Q3: begin
+                if (in[9]) next_state = Q3; // O
+                else if (in[4]) begin
+                    next_state = Q2;
+                    out[2] = 1; // CEL_COUNT
+                end
+                else if (in[4]) begin
+                    next_state = Q4;
+                    out[2] = 1;
+                    out[3] = 1; // WIN
+                end
+                else if (in[4]) begin
+                    next_state = Q5;
+                    out[0] = 1; // WRONG
+                    out[1] = 1; // LOSE
+                end
+            end
+
+            Q4, Q5: if (|in[9:0]) next_state = Q0;
+        endcase
+    end
+endmodule
